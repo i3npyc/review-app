@@ -51,4 +51,4 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
         run: |
-          scp -r dist/ $SSH_USER@$SSH_HOST:~/review-app/public
+          scp -r build/* $SSH_USER@$SSH_HOST:~/review-app/public
