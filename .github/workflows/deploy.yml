@@ -22,3 +22,11 @@ jobs:
         run: npm install
       - name: Build app
         run: npm run build
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download artifacts
+        uses: actions/download-artifacts@v3
+        with:
+          name: build
