@@ -19,6 +19,6 @@ jobs:
           restore-key: |
             ${{env.cache-name}}
       - name: Install deps
-        run: npm ci
+        run: npm run ci
       - name: Build app
         run: npm run build
