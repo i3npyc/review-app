@@ -29,8 +29,24 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: production
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v3
         with:
           name: build
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: echo "your secret key is ${{ secrets.SSH_PRIVATE_KEY }}"
+      # - name: Copy files to the server
+      #   run: |
+      #     scp -r dist/* $SSH_USER@$SSH_HOST:~/realworld/public
