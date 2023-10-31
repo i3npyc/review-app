@@ -51,4 +51,4 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
         run: |
-          echo "$SSH_USER"
+          echo "${{ secrets.SSH_HOST }}"
