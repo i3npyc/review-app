@@ -41,4 +41,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         run: |
-          echo "your secret key is "
+          echo "your secret key is ${{ secrets.SSH_KNOWN_HOSTS }}"
