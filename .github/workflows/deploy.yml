@@ -52,4 +52,4 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
         run: |
-          ls -R
+          scp -r build/* $SSH_USER@$SSH_HOST:~/realworld/public
