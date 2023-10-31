@@ -1,0 +1,24 @@
+name: deploy
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: node:14-alpine
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache modules
+        uses: actions/cache@v3
+        env:
+          cache-name: npm-${{ hashFiles('package-lock.json') }}
+        with:
+          path: ~/.npm
+          key: ${{ env.cache-name }}
+          restore-key: |
+            ${{env.cache-name}}
+      - name: Install deps
+        run: npm ci
+      - name: Build app
+        run: npm run build
