@@ -48,6 +48,4 @@ jobs:
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         run: |
           echo "your secret key is $secrets.SSH_PRIVATE_KEY"
-      # - name: Copy files to the server
-      #   run: |
-      #     scp -r dist/* $SSH_USER@$SSH_HOST:~/realworld/public
+   
