@@ -1,4 +1,4 @@
-name: deploy
+name: stage
 
 on:
   pull_request:
