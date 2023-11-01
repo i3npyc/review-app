@@ -49,4 +49,4 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
         run: |
           ssh $SSH_USER@$SSH_HOST "mkdir -p ~/app/${{ github.head_ref }}/public"
-          rsync -ravz * $SSH_USER@$SSH_HOST:~/app/${{ github.head_ref }}/public/
+          rsync -ravz dist/* $SSH_USER@$SSH_HOST:~/app/${{ github.head_ref }}/public/
